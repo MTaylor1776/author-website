@@ -1,8 +1,9 @@
 ---
-title: "Jax Jensen Book One"
+title: "Traitor's Game"
 series: "Jax Jensen"
 universe: "jensenverse"
 order: 1
+cover: "/images/traitors-game.jpg"
 blurb: "The first installment in the Jax Jensen trilogy. In a galaxy that chews up the unprepared, Jax Jensen is about to find out what he's really made of."
 kindle: "#"
 paperback: "#"

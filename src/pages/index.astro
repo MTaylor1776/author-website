@@ -12,8 +12,7 @@ function slug(id: string) {
   <!-- Hero -->
   <section class="hero">
     <div class="container">
-      <h1 class="hero__name">Matthew Taylor</h1>
-      <p class="hero__tagline">One author, two genres.</p>
+      <h1 class="hero__tagline">One Author, Two Genres.</h1>
     </div>
   </section>
 
@@ -25,7 +24,15 @@ function slug(id: string) {
           <a
             href={`/universe/${slug(universe.id)}`}
             class="universe-card"
-            style={`background: ${universe.data.cardGradient}; --card-glow: ${universe.data.accentGlow};`}
+            style={`
+              --card-glow: ${universe.data.accentGlow};
+              ${universe.data.cardImage
+                ? `background-image: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 100%), url(${universe.data.cardImage});`
+                : `background: ${universe.data.cardGradient};`
+              }
+              background-size: cover;
+              background-position: center;
+            `}
           >
             <span class="universe-card__genre">{universe.data.genre}</span>
             <h2 class="universe-card__title">{universe.data.name}</h2>

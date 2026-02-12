@@ -11,6 +11,7 @@ const universes = defineCollection({
     theme: z.enum(['scifi', 'fantasy']), // CSS theme class
     order: z.number(),
     cardGradient: z.string(),  // CSS gradient for placeholder card
+    cardImage: z.string().optional(), // Background image path for the card
   }),
 });
 
