@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const universes = (await getCollection('universes')).sort((a, b) => a.data.order - b.data.order);
+
+function slug(id: string) {
+  return id.replace(/\.md$/, '');
+}
+---
+<BaseLayout title="Matthew Taylor — Author">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero__name">Matthew Taylor</h1>
+      <p class="hero__tagline">One author, two genres.</p>
+    </div>
+  </section>
+
+  <!-- Universe Cards -->
+  <section class="section">
+    <div class="container">
+      <div class="universe-grid">
+        {universes.map((universe) => (
+          <a
+            href={`/universe/${slug(universe.id)}`}
+            class="universe-card"
+            style={`background: ${universe.data.cardGradient}; --card-glow: ${universe.data.accentGlow};`}
+          >
+            <span class="universe-card__genre">{universe.data.genre}</span>
+            <h2 class="universe-card__title">{universe.data.name}</h2>
+            <p class="universe-card__tagline">{universe.data.tagline}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about-section">
+    <div class="container">
+      <h2>Carefully-crafted, character-driven stories.</h2>
+      <p>
+        Whether it's the far reaches of space or the ancient kingdoms of a fantasy world,
+        every story I write is built on the same foundation: characters you'll care about,
+        choices that matter, and worlds you won't want to leave.
+      </p>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter" id="newsletter">
+    <div class="container">
+      <h2>Stay in the Loop</h2>
+      <p>Get updates on new releases, bonus content, and behind-the-scenes looks at upcoming projects.</p>
+      <form class="newsletter-form" action="#" method="post">
+        <input type="email" name="email" placeholder="your@email.com" required />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <style>
+    .universe-card::before {
+      box-shadow: inset 0 0 60px var(--card-glow), 0 0 30px var(--card-glow);
+    }
+  </style>
+</BaseLayout>

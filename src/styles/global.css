@@ -1,0 +1,628 @@
+/* ============================================
+   Matthew Taylor — Author Website
+   Global Styles with Genre Theming
+   ============================================ */
+
+/* --- Reset & Base --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* --- Theme: Landing (default) --- */
+:root,
+[data-theme="landing"] {
+  --color-bg: #0a0a0f;
+  --color-bg-card: #1a1a1a;
+  --color-text: #e8e8ed;
+  --color-text-muted: #94a3b8;
+  --color-accent: #a8b2c1;
+  --color-accent-glow: rgba(226, 232, 240, 0.3);
+  --color-border: #2a2a3a;
+  --font-heading: 'Cinzel', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --max-width: 1100px;
+  --transition-speed: 0.3s;
+}
+
+/* --- Theme: Sci-Fi (Jensenverse) --- */
+[data-theme="scifi"] {
+  --color-bg: #050d18;
+  --color-bg-card: rgba(26, 47, 79, 0.4);
+  --color-text: #e0e8f0;
+  --color-text-muted: #7a8fa8;
+  --color-accent: #00d9ff;
+  --color-accent-glow: rgba(0, 255, 255, 0.5);
+  --color-border: #1a2f4f;
+  --font-heading: 'Orbitron', sans-serif;
+  --font-body: 'Rajdhani', sans-serif;
+}
+
+/* --- Theme: Fantasy (Winds of Taramore) --- */
+[data-theme="fantasy"] {
+  --color-bg: #0d0705;
+  --color-bg-card: rgba(61, 40, 23, 0.4);
+  --color-text: #f0e6d8;
+  --color-text-muted: #a8917a;
+  --color-accent: #d4a574;
+  --color-accent-glow: rgba(255, 179, 71, 0.6);
+  --color-border: #3d2817;
+  --font-heading: 'Cinzel', Georgia, serif;
+  --font-body: 'EB Garamond', Georgia, serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color var(--transition-speed);
+}
+
+a:hover {
+  color: #fff;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* --- Typography --- */
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--color-text);
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+h2 { font-size: clamp(1.5rem, 3.5vw, 2.2rem); }
+h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
+
+/* Sci-fi headings get a subtle glow */
+[data-theme="scifi"] h1,
+[data-theme="scifi"] h2 {
+  text-shadow: 0 0 20px var(--color-accent-glow);
+}
+
+/* Fantasy headings get warm tones */
+[data-theme="fantasy"] h1,
+[data-theme="fantasy"] h2 {
+  color: var(--color-accent);
+}
+
+/* Sci-fi body text is slightly larger (Rajdhani reads small) */
+[data-theme="scifi"] body {
+  font-size: 1.05rem;
+}
+
+/* Fantasy body text with classic serif sizing */
+[data-theme="fantasy"] body {
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+/* --- Layout Utilities --- */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section {
+  padding: 4rem 0;
+}
+
+/* --- Site Header --- */
+.site-header {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  background: rgba(10, 10, 15, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+}
+
+[data-theme="scifi"] .site-header {
+  background: rgba(5, 13, 24, 0.95);
+}
+
+[data-theme="fantasy"] .site-header {
+  background: rgba(13, 7, 5, 0.95);
+}
+
+.site-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-logo {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 1.3rem;
+  color: var(--color-text);
+  letter-spacing: 0.02em;
+}
+
+.site-logo:hover {
+  color: var(--color-accent);
+}
+
+.site-nav {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.site-nav a {
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: color var(--transition-speed);
+}
+
+.site-nav a:hover {
+  color: var(--color-text);
+}
+
+/* Mobile nav toggle */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--color-text);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@media (max-width: 640px) {
+  .nav-toggle {
+    display: block;
+  }
+
+  .site-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: rgba(10, 10, 15, 0.98);
+    padding: 1rem 1.5rem;
+    gap: 1rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .site-nav.open {
+    display: flex;
+  }
+}
+
+/* --- Site Footer --- */
+.site-footer {
+  border-top: 1px solid var(--color-border);
+  padding: 2rem 0;
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
+.site-footer a {
+  color: var(--color-text-muted);
+}
+
+.site-footer a:hover {
+  color: var(--color-text);
+}
+
+/* --- Universe Cards (Landing Page) --- */
+.universe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+.universe-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2rem;
+  text-decoration: none;
+  color: var(--color-text);
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+  border: 1px solid var(--color-border);
+}
+
+.universe-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  border-radius: 12px;
+  transition: opacity var(--transition-speed);
+  pointer-events: none;
+}
+
+.universe-card:hover {
+  transform: translateY(-4px);
+  border-color: transparent;
+}
+
+.universe-card:hover::before {
+  opacity: 1;
+}
+
+.universe-card__genre {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.5rem;
+  opacity: 0.7;
+}
+
+.universe-card__title {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.universe-card__tagline {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+/* --- Hero Section --- */
+.hero {
+  text-align: center;
+  padding: 6rem 0 3rem;
+}
+
+.hero__name {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+}
+
+.hero__tagline {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  color: var(--color-text-muted);
+  font-style: italic;
+  font-weight: 300;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* --- Newsletter Section --- */
+.newsletter {
+  text-align: center;
+  padding: 4rem 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.newsletter h2 {
+  margin-bottom: 0.75rem;
+}
+
+.newsletter p {
+  color: var(--color-text-muted);
+  margin-bottom: 1.5rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 0.75rem;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.newsletter-form input[type="email"] {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-card);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color var(--transition-speed);
+}
+
+.newsletter-form input[type="email"]:focus {
+  border-color: var(--color-accent);
+}
+
+.newsletter-form button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  background: var(--color-accent);
+  color: #0a0a0f;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition-speed), transform var(--transition-speed);
+}
+
+.newsletter-form button:hover {
+  filter: brightness(1.15);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 480px) {
+  .newsletter-form {
+    flex-direction: column;
+  }
+}
+
+/* --- Book Grid --- */
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+.book-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform var(--transition-speed), border-color var(--transition-speed);
+  text-decoration: none;
+  color: var(--color-text);
+  display: block;
+}
+
+.book-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-accent);
+}
+
+.book-card__cover {
+  aspect-ratio: 2 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  padding: 1rem;
+}
+
+/* Sci-fi book cover placeholder */
+[data-theme="scifi"] .book-card__cover {
+  background: linear-gradient(135deg, #0a1628, #1a2f4f, #0a1628);
+}
+
+/* Fantasy book cover placeholder */
+[data-theme="fantasy"] .book-card__cover {
+  background: linear-gradient(135deg, #1a0f0a, #3d2817, #1a0f0a);
+}
+
+/* Default cover placeholder */
+.book-card__cover {
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+}
+
+.book-card__cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.book-card__info {
+  padding: 1.25rem;
+}
+
+.book-card__series {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+  margin-bottom: 0.25rem;
+}
+
+.book-card__title {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.book-card__blurb {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* --- Book Detail Page --- */
+.book-detail {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 3rem;
+  padding: 3rem 0;
+}
+
+@media (max-width: 768px) {
+  .book-detail {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.book-detail__cover {
+  aspect-ratio: 2 / 3;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  padding: 1.5rem;
+}
+
+[data-theme="scifi"] .book-detail__cover {
+  background: linear-gradient(135deg, #0a1628, #1a2f4f, #0a1628);
+}
+
+[data-theme="fantasy"] .book-detail__cover {
+  background: linear-gradient(135deg, #1a0f0a, #3d2817, #1a0f0a);
+}
+
+.book-detail__cover {
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+}
+
+.book-detail__cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.book-detail__series {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+  margin-bottom: 0.5rem;
+}
+
+.book-detail__title {
+  margin-bottom: 1rem;
+}
+
+.book-detail__blurb {
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+  margin-bottom: 2rem;
+  line-height: 1.7;
+}
+
+.book-detail__content {
+  margin-top: 2rem;
+  line-height: 1.8;
+}
+
+.book-detail__content p {
+  margin-bottom: 1rem;
+}
+
+/* --- Buy Links --- */
+.buy-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.buy-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-card);
+  color: var(--color-text);
+  font-size: 0.9rem;
+  transition: border-color var(--transition-speed), background var(--transition-speed);
+}
+
+.buy-link:hover {
+  border-color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+  color: var(--color-text);
+}
+
+/* --- Universe Page Header --- */
+.universe-header {
+  padding: 4rem 0 2rem;
+  text-align: center;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.universe-header__genre {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-accent);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.universe-header__title {
+  margin-bottom: 1rem;
+}
+
+.universe-header__description {
+  max-width: 650px;
+  margin: 0 auto;
+  color: var(--color-text-muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+/* --- Back Link --- */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  padding-top: 1.5rem;
+  margin-bottom: 0;
+}
+
+.back-link:hover {
+  color: var(--color-text);
+}
+
+/* --- About Section (Landing) --- */
+.about-section {
+  text-align: center;
+  padding: 3rem 0;
+}
+
+.about-section p {
+  max-width: 600px;
+  margin: 0.75rem auto 0;
+  color: var(--color-text-muted);
+  font-size: 1rem;
+}

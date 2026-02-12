@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const universes = await getCollection('universes');
+  const books = await getCollection('books');
+
+  return books.map((book) => {
+    const universe = universes.find((u) => u.id.replace(/\.md$/, '') === book.data.universe);
+    return {
+      params: { universeId: book.data.universe, bookId: book.id.replace(/\.md$/, '') },
+      props: { book, universe },
+    };
+  });
+}
+
+const { book, universe } = Astro.props;
+const { Content } = await render(book);
+
+const buyLinks = [
+  { label: 'Kindle', url: book.data.kindle },
+  { label: 'Barnes & Noble', url: book.data.barnesNoble },
+  { label: 'Kobo', url: book.data.kobo },
+  { label: 'Apple Books', url: book.data.apple },
+  { label: 'Paperback', url: book.data.paperback },
+].filter((link) => link.url);
+---
+<BaseLayout
+  title={`${book.data.title} — Matthew Taylor`}
+  description={book.data.blurb}
+  theme={universe?.data.theme}
+  accent={universe?.data.accent}
+  accentGlow={universe?.data.accentGlow}
+>
+  <div class="container">
+    <a href={`/universe/${book.data.universe}`} class="back-link">&larr; Back to {universe?.data.name}</a>
+
+    <div class="book-detail">
+      <div class="book-detail__cover">
+        {book.data.cover
+          ? <img src={book.data.cover} alt={`${book.data.title} cover`} />
+          : <span>{book.data.title}</span>
+        }
+      </div>
+
+      <div>
+        <span class="book-detail__series">{book.data.series} &middot; Book {book.data.order}</span>
+        <h1 class="book-detail__title">{book.data.title}</h1>
+        <p class="book-detail__blurb">{book.data.blurb}</p>
+
+        {buyLinks.length > 0 && (
+          <div class="buy-links">
+            {buyLinks.map((link) => (
+              <a href={link.url} class="buy-link" target="_blank" rel="noopener noreferrer">
+                {link.label}
+              </a>
+            ))}
+          </div>
+        )}
+
+        <div class="book-detail__content">
+          <Content />
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

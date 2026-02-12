@@ -1,0 +1,79 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  theme?: 'landing' | 'scifi' | 'fantasy';
+  accent?: string;
+  accentGlow?: string;
+}
+
+const {
+  title,
+  description = "Matthew Taylor — One Author, Two Genres. Carefully-crafted, character-driven science fiction and fantasy.",
+  theme = 'landing',
+  accent,
+  accentGlow,
+} = Astro.props;
+---
+<html lang="en" data-theme={theme}>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=EB+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&family=Orbitron:wght@500;700;900&family=Rajdhani:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    {accent && (
+      <style define:vars={{ accent, accentGlow }}>
+        :root {
+          --color-accent: var(--accent);
+          --color-accent-glow: var(--accentGlow);
+        }
+      </style>
+    )}
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a href="/" class="site-logo">Matthew Taylor</a>
+        <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+        <nav>
+          <ul class="site-nav">
+            <li><a href="/universe/jensenverse">Sci-Fi</a></li>
+            <li><a href="/universe/winds-of-taramore">Fantasy</a></li>
+            <li><a href="/#newsletter">Newsletter</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; {new Date().getFullYear()} Matthew Taylor. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      const toggle = document.querySelector('.nav-toggle');
+      const nav = document.querySelector('.site-nav');
+      if (toggle && nav) {
+        toggle.addEventListener('click', () => nav.classList.toggle('open'));
+      }
+    </script>
+  </body>
+</html>

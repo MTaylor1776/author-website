@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const universes = await getCollection('universes');
+  return universes.map((universe) => ({
+    params: { id: universe.id.replace(/\.md$/, '') },
+    props: { universe },
+  }));
+}
+
+function slug(id: string) {
+  return id.replace(/\.md$/, '');
+}
+
+const { universe } = Astro.props;
+const { Content } = await render(universe);
+
+const allBooks = await getCollection('books');
+const books = allBooks
+  .filter((book) => book.data.universe === slug(universe.id))
+  .sort((a, b) => a.data.order - b.data.order);
+---
+<BaseLayout
+  title={`${universe.data.name} — Matthew Taylor`}
+  description={universe.data.tagline}
+  theme={universe.data.theme}
+  accent={universe.data.accent}
+  accentGlow={universe.data.accentGlow}
+>
+  <div class="container">
+    <a href="/" class="back-link">&larr; All Universes</a>
+  </div>
+
+  <section class="universe-header">
+    <div class="container">
+      <span class="universe-header__genre">{universe.data.genre}</span>
+      <h1 class="universe-header__title">{universe.data.name}</h1>
+      <div class="universe-header__description">
+        <Content />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Books</h2>
+      <div class="book-grid">
+        {books.map((book) => (
+          <a href={`/universe/${slug(universe.id)}/${slug(book.id)}`} class="book-card">
+            <div class="book-card__cover">
+              {book.data.cover
+                ? <img src={book.data.cover} alt={`${book.data.title} cover`} />
+                : <span>{book.data.title}</span>
+              }
+            </div>
+            <div class="book-card__info">
+              <span class="book-card__series">{book.data.series}</span>
+              <h3 class="book-card__title">{book.data.title}</h3>
+              <p class="book-card__blurb">{book.data.blurb}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
