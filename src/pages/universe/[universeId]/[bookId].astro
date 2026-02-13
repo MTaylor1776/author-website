@@ -15,8 +15,21 @@ export async function getStaticPaths() {
   });
 }
 
+function slug(id: string) {
+  return id.replace(/\.md$/, '');
+}
+
 const { book, universe } = Astro.props;
 const { Content } = await render(book);
+
+// Find next book in same series (sequential only)
+const allBooks = await getCollection('books');
+const seriesBooks = allBooks
+  .filter((b) => b.data.series === book.data.series && b.data.universe === book.data.universe)
+  .sort((a, b) => a.data.order - b.data.order);
+const nextBook = seriesBooks.length > 1
+  ? seriesBooks.find((b) => b.data.order === book.data.order + 1)
+  : undefined;
 
 const buyLinks = [
   { label: 'Kindle', url: book.data.kindle },
@@ -62,6 +75,22 @@ const buyLinks = [
         <div class="book-detail__content">
           <Content />
         </div>
+
+        {nextBook && (
+          <a href={`/universe/${book.data.universe}/${slug(nextBook.id)}`} class="next-book">
+            <span class="next-book__label">Next in the series</span>
+            <div class="next-book__preview">
+              {nextBook.data.cover
+                ? <img src={nextBook.data.cover} alt={`${nextBook.data.title} cover`} class="next-book__cover" />
+                : <div class="next-book__cover next-book__cover--placeholder">{nextBook.data.title}</div>
+              }
+              <div class="next-book__info">
+                <span class="next-book__title">{nextBook.data.title}</span>
+                <span class="next-book__series">{nextBook.data.series} &middot; Book {nextBook.data.order}</span>
+              </div>
+            </div>
+          </a>
+        )}
       </div>
     </div>
   </div>
