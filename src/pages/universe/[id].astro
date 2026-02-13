@@ -37,7 +37,7 @@ const books = allBooks
     <div class="container">
       <span class="universe-header__genre">{universe.data.genre}</span>
       <h1 class="universe-header__title">{universe.data.name}</h1>
-      <div class="universe-header__description">
+      <div class={`universe-header__description universe-header__description--${slug(universe.id)}`}>
         <Content />
       </div>
     </div>
