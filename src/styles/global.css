@@ -234,7 +234,7 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
 /* --- Universe Cards (Landing Page) --- */
 .universe-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 1.5rem;
   padding: 1rem 0;
   max-width: 1100px;
@@ -308,6 +308,21 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
   font-size: clamp(0.75rem, 1.4vw, 0.9rem);
   color: var(--color-text-muted);
   line-height: 1.4;
+}
+
+.universe-card--placeholder {
+  cursor: default;
+  opacity: 0.6;
+  border-style: dashed;
+}
+
+.universe-card--placeholder:hover {
+  transform: none;
+  border-color: var(--color-border);
+}
+
+.universe-card--placeholder .universe-card__title {
+  letter-spacing: 0.15em;
 }
 
 /* --- Hero Section --- */
