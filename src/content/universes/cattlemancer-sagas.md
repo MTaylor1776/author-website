@@ -8,7 +8,7 @@ theme: "fantasy"
 order: 3
 cardGradient: "linear-gradient(135deg, #2a1a0e 0%, #4a3020 40%, #6b4430 100%)"
 cardImage: "/images/cattlemancer-card.png"
-music: "/audio/lost-frontier.mp3"
+music: "/audio/smoking-gun.mp3"
 ---
 
 Welcome to the continent of Bribane, a land caught between the promise of a Gilded Age and the horrors of an ancient, magical world. Here, the great Republic of Bribane pushes ever forward, its path forged by steam-powered railways and the relentless ambition of its industrial barons. But civilization is a fragile veneer. In the boardrooms of the elite, a secret cabal known as The Company uses magically-fueled enforcers to crush their rivals and control the nation's destiny.
