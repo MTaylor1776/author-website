@@ -1,6 +1,6 @@
 ---
 title: "Grave Circumstances"
-series: "Eli's Elixorium"
+series: "Grave Circumstances"
 universe: "winds-of-taramore"
 order: 3
 cover: "/images/grave-circumstances.jpg"

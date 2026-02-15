@@ -1,6 +1,6 @@
 ---
 title: "The Journal and The Stone"
-series: "Winds of Taramore"
+series: "The Journal and The Stone"
 universe: "winds-of-taramore"
 order: 1
 cover: "/images/journal-and-the-stone.jpg"
