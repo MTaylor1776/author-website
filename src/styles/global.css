@@ -413,6 +413,132 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
   }
 }
 
+/* --- MailerLite Form Integration --- */
+.ml-form-embedContainer {
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.ml-form-embedWrapper {
+  background: transparent !important;
+  border: none !important;
+}
+
+.ml-form-formContent {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.ml-form-fieldRow {
+  flex: 1;
+}
+
+.ml-form-fieldRow input[type="email"] {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-card);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color var(--transition-speed);
+}
+
+.ml-form-fieldRow input[type="email"]:focus {
+  border-color: var(--color-accent);
+}
+
+.ml-button-horizontal button.primary {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  background: var(--color-accent);
+  color: #0a0a0f;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition-speed), transform var(--transition-speed);
+  white-space: nowrap;
+}
+
+.ml-button-horizontal button.primary:hover {
+  filter: brightness(1.15);
+  transform: translateY(-1px);
+}
+
+.ml-form-recaptcha {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.ml-form-successContent {
+  text-align: center;
+  padding: 1.5rem 0;
+}
+
+.ml-form-successContent h4 {
+  font-family: var(--font-heading);
+  color: var(--color-text);
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.ml-form-successContent p {
+  color: var(--color-text-muted);
+  font-size: 1rem;
+}
+
+.ml-form-embedSubmitLoad {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+}
+
+.ml-form-embedSubmitLoad:after {
+  content: "";
+  display: block;
+  width: 11px;
+  height: 11px;
+  margin: 1px;
+  border-radius: 50%;
+  border: 4px solid #fff;
+  border-color: #fff #fff #fff transparent;
+  animation: ml-form-embedSubmitLoad 1.2s linear infinite;
+}
+
+@keyframes ml-form-embedSubmitLoad {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+@media (max-width: 480px) {
+  .ml-form-formContent {
+    flex-direction: column;
+  }
+
+  .g-recaptcha {
+    transform: scale(0.78);
+    -webkit-transform: scale(0.78);
+    transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+  }
+}
+
 /* --- Book Grid --- */
 .book-grid {
   display: grid;
@@ -813,11 +939,49 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
   color: var(--color-text);
 }
 
-/* --- Ambient Audio Player --- */
-.audio-player {
+/* --- Ambient Audio Widget --- */
+.audio-widget {
   position: fixed;
-  bottom: 1.5rem;
-  right: 1.5rem;
+  bottom: 1rem;
+  right: 1rem;
+  width: 120px;
+  height: 120px;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.audio-widget__text {
+  position: absolute;
+  inset: 0;
+  width: 120px;
+  height: 120px;
+  animation: audio-spin 12s linear infinite;
+}
+
+.audio-widget__text text {
+  fill: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: 11.5px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+}
+
+@keyframes audio-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.audio-widget:hover .audio-widget__text {
+  animation-play-state: paused;
+}
+
+.audio-widget:hover .audio-widget__text text {
+  fill: var(--color-accent);
+}
+
+.audio-player {
   width: 48px;
   height: 48px;
   border-radius: 50%;
@@ -828,7 +992,6 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 200;
   transition: border-color var(--transition-speed), box-shadow var(--transition-speed), transform var(--transition-speed);
 }
 

@@ -37,6 +37,13 @@ const {
       rel="stylesheet"
     />
 
+    <!-- MailerLite Universal -->
+    <script>
+      (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);},l=d.createElement(e),l.async=1,l.src=u,n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+      (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+      ml('account', '2110846');
+    </script>
+
     {accent && (
       <style define:vars={{ accent, accentGlow }}>
         :root {
@@ -49,11 +56,11 @@ const {
   <body>
     <header class="site-header">
       <div class="container">
-        <a href="/" class="site-logo">Author Matthew Taylor</a>
+        <a href="/" class="site-logo">Author M.P. Tayle</a>
         <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
         <nav>
           <ul class="site-nav">
-            <li><a href="/#newsletter">Newsletter</a></li>
+            <li><a class="ml-onclick-form" href="javascript:void(0)" onclick="ml('show', 'WE9oBU', true)">Newsletter</a></li>
           </ul>
         </nav>
       </div>
@@ -73,14 +80,24 @@ const {
     </footer>
 
     {music && (
-      <button class="audio-player" id="audio-player" aria-label="Play ambient music" data-music={music}>
-        <svg class="audio-player__icon audio-player__icon--play" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-          <path d="M8 5v14l11-7z"/>
+      <div class="audio-widget">
+        <svg class="audio-widget__text" viewBox="0 0 120 120" width="120" height="120">
+          <defs>
+            <path id="curve" d="M 60,60 m -42,0 a 42,42 0 1,1 84,0 a 42,42 0 1,1 -84,0" fill="none" />
+          </defs>
+          <text>
+            <textPath href="#curve" startOffset="50%" text-anchor="middle">Oh, thematic music?</textPath>
+          </text>
         </svg>
-        <svg class="audio-player__icon audio-player__icon--pause" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-          <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-        </svg>
-      </button>
+        <button class="audio-player" id="audio-player" aria-label="Play ambient music" data-music={music}>
+          <svg class="audio-player__icon audio-player__icon--play" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+          <svg class="audio-player__icon audio-player__icon--pause" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+          </svg>
+        </button>
+      </div>
     )}
 
     <script>
