@@ -339,6 +339,13 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
   color: var(--color-text);
 }
 
+.hero__prompt {
+  margin-top: 0.75rem;
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  color: var(--color-text-muted);
+  letter-spacing: 0.02em;
+}
+
 /* --- Newsletter Section --- */
 .newsletter {
   text-align: center;
