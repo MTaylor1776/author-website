@@ -8,6 +8,7 @@ theme: "fantasy"
 order: 2
 cardGradient: "linear-gradient(135deg, #2d1810 0%, #3d2317 40%, #5c3a1e 100%)"
 cardImage: "/images/taramore-card.jpg"
+music: "/audio/enchanted-journey.mp3"
 ---
 
 Step into Taramore — a world of flying ships, magical stones, and high adventure. The winds carry more than whispers here; they carry entire fleets across the sky, powered by ancient stones whose origins have long been forgotten. On the ground and in the air, the fate of kingdoms rests on the shoulders of those who least expect it.

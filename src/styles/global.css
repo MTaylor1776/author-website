@@ -813,6 +813,53 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
   color: var(--color-text);
 }
 
+/* --- Ambient Audio Player --- */
+.audio-player {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-card);
+  color: var(--color-accent);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  transition: border-color var(--transition-speed), box-shadow var(--transition-speed), transform var(--transition-speed);
+}
+
+.audio-player:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 12px var(--color-accent-glow);
+  transform: scale(1.08);
+}
+
+.audio-player__icon {
+  width: 22px;
+  height: 22px;
+}
+
+.audio-player__icon--pause {
+  display: none;
+}
+
+.audio-player.playing .audio-player__icon--play {
+  display: none;
+}
+
+.audio-player.playing .audio-player__icon--pause {
+  display: block;
+}
+
+.music-credit {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+}
+
 /* --- About Section (Landing) --- */
 .about-section {
   text-align: center;

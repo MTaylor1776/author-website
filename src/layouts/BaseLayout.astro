@@ -7,6 +7,7 @@ interface Props {
   theme?: 'landing' | 'scifi' | 'fantasy';
   accent?: string;
   accentGlow?: string;
+  music?: string;
 }
 
 const {
@@ -15,6 +16,7 @@ const {
   theme = 'landing',
   accent,
   accentGlow,
+  music,
 } = Astro.props;
 ---
 <html lang="en" data-theme={theme}>
@@ -64,14 +66,87 @@ const {
     <footer class="site-footer">
       <div class="container">
         <p>&copy; {new Date().getFullYear()} Matthew Taylor. All rights reserved.</p>
+        {music && (
+          <p class="music-credit">Music by <a href="https://incompetech.com" target="_blank" rel="noopener noreferrer">Kevin MacLeod</a> (incompetech.com) &mdash; Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a></p>
+        )}
       </div>
     </footer>
+
+    {music && (
+      <button class="audio-player" id="audio-player" aria-label="Play ambient music" data-music={music}>
+        <svg class="audio-player__icon audio-player__icon--play" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+        <svg class="audio-player__icon audio-player__icon--pause" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+          <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+        </svg>
+      </button>
+    )}
 
     <script>
       const toggle = document.querySelector('.nav-toggle');
       const nav = document.querySelector('.site-nav');
       if (toggle && nav) {
         toggle.addEventListener('click', () => nav.classList.toggle('open'));
+      }
+
+      // Ambient audio player
+      const playerBtn = document.getElementById('audio-player') as HTMLButtonElement | null;
+      if (playerBtn) {
+        const musicSrc = playerBtn.dataset.music!;
+        const storedSrc = sessionStorage.getItem('ambientMusicSrc');
+        const wasPlaying = sessionStorage.getItem('ambientMusicPlaying') === 'true';
+
+        let audio: HTMLAudioElement;
+
+        // Reuse existing audio element if same track, otherwise create new
+        const existingAudio = document.getElementById('ambient-audio') as HTMLAudioElement | null;
+        if (existingAudio && storedSrc === musicSrc) {
+          audio = existingAudio;
+        } else {
+          if (existingAudio) {
+            existingAudio.pause();
+            existingAudio.remove();
+          }
+          audio = document.createElement('audio');
+          audio.id = 'ambient-audio';
+          audio.src = musicSrc;
+          audio.loop = true;
+          audio.volume = 0.3;
+          audio.preload = 'none';
+          document.body.appendChild(audio);
+
+          // If switching universes, stop playback
+          if (storedSrc && storedSrc !== musicSrc) {
+            sessionStorage.setItem('ambientMusicPlaying', 'false');
+            sessionStorage.setItem('ambientMusicSrc', musicSrc);
+          }
+        }
+
+        function updateButton(playing: boolean) {
+          playerBtn!.classList.toggle('playing', playing);
+          playerBtn!.setAttribute('aria-label', playing ? 'Pause ambient music' : 'Play ambient music');
+        }
+
+        // Restore play state if same track was playing
+        if (wasPlaying && storedSrc === musicSrc) {
+          audio.preload = 'auto';
+          audio.play().then(() => updateButton(true)).catch(() => updateButton(false));
+        }
+
+        playerBtn.addEventListener('click', () => {
+          if (audio.paused) {
+            audio.play().then(() => {
+              updateButton(true);
+              sessionStorage.setItem('ambientMusicPlaying', 'true');
+              sessionStorage.setItem('ambientMusicSrc', musicSrc);
+            }).catch(() => {});
+          } else {
+            audio.pause();
+            updateButton(false);
+            sessionStorage.setItem('ambientMusicPlaying', 'false');
+          }
+        });
       }
     </script>
   </body>

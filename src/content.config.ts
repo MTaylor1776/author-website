@@ -12,6 +12,7 @@ const universes = defineCollection({
     order: z.number(),
     cardGradient: z.string(),  // CSS gradient for placeholder card
     cardImage: z.string().optional(), // Background image path for the card
+    music: z.string().optional(),     // Ambient audio file path
   }),
 });
 
