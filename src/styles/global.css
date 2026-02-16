@@ -816,6 +816,7 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
     );
   border: 1px solid rgba(0, 217, 255, 0.15);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+  color: #b8ccdf;
 }
 
 /* Fantasy: Scroll / parchment */
@@ -848,6 +849,7 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
     0 2px 8px rgba(0, 0, 0, 0.2);
   border-top: 2px solid rgba(212, 165, 116, 0.15);
   border-bottom: 2px solid rgba(212, 165, 116, 0.15);
+  color: #d4c4a8;
 }
 
 /* Cattlemancer: Tanned leather / hide */
