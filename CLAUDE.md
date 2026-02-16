@@ -14,7 +14,7 @@
 - **Zero JS Frameworks**: Pure Astro, no React/Vue — client JS is nav toggle, audio player, MailerLite
 - **Theming**: CSS custom properties set per-universe via layout props (`theme`, `accent`, `accentGlow`)
 - **Fonts**: Google Fonts loaded in BaseLayout (Cinzel, EB Garamond, Inter, Orbitron, Rajdhani)
-- **Newsletter**: MailerLite — inline form on landing page + popup via nav "Newsletter" link
+- **Newsletter**: MailerLite — JS embed (`ml-embedded` div) on landing page + popup via nav "Newsletter" link. MailerLite's injected heading/subtext hidden via CSS; site provides its own "Stay in the Loop" blurb. Popup styled in MailerLite dashboard (Inter font, `#2a1f35` background).
 - **About Modal**: `<dialog>` element in BaseLayout — opened by clicking site logo on homepage
 - **Audio Widget**: Floating play button with spinning "Oh, thematic music?" SVG text (per-universe tracks)
 - **Background**: Landing page has ambient color washes — blue glow (left/sci-fi), gold glow (right/fantasy), purple blend center
@@ -33,16 +33,19 @@
 
 ## Important Patterns
 - **External scripts must use `is:inline`** — Astro converts `<script>` to ES modules by default, which breaks third-party scripts (MailerLite, reCAPTCHA) and global function declarations
+- **Newsletter uses JS embed, NOT HTML embed** — the old HTML embed with manual reCAPTCHA broke; replaced with `<div class="ml-embedded" data-form="WE9oBU"></div>` which MailerLite's universal JS handles automatically
+- **MailerLite dark-theme overrides** — MailerLite injects light-theme CSS; `global.css` has `!important` overrides for dark backgrounds, white text, accent-colored buttons
 - **Site logo behavior**: On homepage → opens About modal; on other pages → navigates home
 - **No series labels above book titles** — removed from both book cards and book detail pages
 - **Audio widget on mobile**: Spinning text hidden, button shrinks to 38px
+- **Coming-soon universes**: Set `comingSoon: true` in frontmatter → renders as non-clickable `<div>` with "Coming 2026!" badge on landing page
 
 ## Content
-### Universes (3 + 1 coming soon)
+### Universes (2 active + 2 coming soon)
 1. **The Jensenverse** (Sci-Fi) — cyan/blue glow, Orbitron + Rajdhani fonts
 2. **Winds of Taramore** (High Fantasy) — golden accent, Cinzel + EB Garamond fonts
-3. **Cattlemancer Sagas** (Grimdark Western Fantasy) — copper accent, fantasy fonts
-4. **Mysthaven** (Dark Cozy Fantasy) — placeholder card on landing page, coming soon
+3. **Cattlemancer Sagas** (Grimdark Western Fantasy) — copper accent, `comingSoon: true`, music: western-streets.mp3
+4. **Mysthaven** (Dark Cozy Fantasy) — purple accent, `comingSoon: true`, music: darkest-child.mp3
 
 ### Books (7)
 - **Jensenverse**: Jax Jensen trilogy (3 books, sequential) + G.O.S. 292 (standalone novella) — all have buy links
