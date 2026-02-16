@@ -67,10 +67,11 @@ body {
 /* Landing page background — sci-fi blue left, fantasy gold right */
 [data-theme="landing"] body {
   background:
-    radial-gradient(ellipse at 0% 30%, rgba(30, 60, 140, 0.15) 0%, transparent 50%),
-    radial-gradient(ellipse at 100% 70%, rgba(160, 100, 30, 0.12) 0%, transparent 50%),
-    radial-gradient(ellipse at 0% 80%, rgba(20, 50, 120, 0.1) 0%, transparent 40%),
-    radial-gradient(ellipse at 100% 20%, rgba(140, 90, 25, 0.08) 0%, transparent 40%),
+    radial-gradient(ellipse at 0% 20%, rgba(30, 65, 160, 0.22) 0%, transparent 55%),
+    radial-gradient(ellipse at 0% 75%, rgba(20, 55, 140, 0.16) 0%, transparent 45%),
+    radial-gradient(ellipse at 100% 65%, rgba(180, 115, 35, 0.18) 0%, transparent 55%),
+    radial-gradient(ellipse at 100% 15%, rgba(155, 100, 30, 0.14) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 50%, rgba(60, 40, 80, 0.06) 0%, transparent 60%),
     var(--color-bg);
 }
 
