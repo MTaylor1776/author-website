@@ -45,7 +45,7 @@
 1. **The Jensenverse** (Sci-Fi) — cyan/blue glow, Orbitron + Rajdhani fonts
 2. **Winds of Taramore** (High Fantasy) — golden accent, Cinzel + EB Garamond fonts
 3. **Cattlemancer Sagas** (Grimdark Western Fantasy) — copper accent, `comingSoon: true`, music: western-streets.mp3
-4. **Mysthaven** (Dark Cozy Fantasy) — purple accent, `comingSoon: true`, music: darkest-child.mp3
+4. **Mysthaven** (Dark Cozy Fantasy) — purple accent, `comingSoon: true`, music: darkest-child.mp3, card image: mysthaven-card.jpg (NightCafe)
 
 ### Books (7)
 - **Jensenverse**: Jax Jensen trilogy (3 books, sequential) + G.O.S. 292 (standalone novella) — all have buy links
