@@ -64,39 +64,48 @@ body {
   min-height: 100vh;
 }
 
-/* Landing page background texture — sci-fi stars left, fantasy motes right */
+/* Landing page background texture — sci-fi left, fantasy right */
 [data-theme="landing"] body {
   background-image:
-    /* Sci-fi stars — left side, cool blue tint */
-    radial-gradient(1px 1px at 5% 15%, rgba(150, 180, 255, 0.4), transparent),
-    radial-gradient(1px 1px at 12% 45%, rgba(150, 180, 255, 0.3), transparent),
-    radial-gradient(1.5px 1.5px at 8% 72%, rgba(150, 180, 255, 0.35), transparent),
-    radial-gradient(1px 1px at 18% 28%, rgba(120, 160, 255, 0.25), transparent),
-    radial-gradient(1px 1px at 3% 88%, rgba(150, 180, 255, 0.3), transparent),
-    radial-gradient(1.5px 1.5px at 22% 62%, rgba(130, 170, 255, 0.2), transparent),
-    radial-gradient(1px 1px at 15% 8%, rgba(150, 180, 255, 0.35), transparent),
-    radial-gradient(1px 1px at 10% 35%, rgba(140, 170, 255, 0.2), transparent),
-    radial-gradient(1px 1px at 25% 80%, rgba(130, 160, 255, 0.15), transparent),
-    radial-gradient(1.5px 1.5px at 6% 55%, rgba(150, 180, 255, 0.3), transparent),
-    /* Transition — middle, fading between */
-    radial-gradient(1px 1px at 38% 20%, rgba(180, 170, 200, 0.2), transparent),
-    radial-gradient(1px 1px at 45% 55%, rgba(200, 180, 180, 0.15), transparent),
-    radial-gradient(1.5px 1.5px at 50% 75%, rgba(190, 175, 190, 0.18), transparent),
-    radial-gradient(1px 1px at 42% 40%, rgba(185, 175, 195, 0.15), transparent),
-    /* Fantasy motes — right side, warm golden tint */
-    radial-gradient(2px 2px at 75% 18%, rgba(255, 200, 120, 0.25), transparent),
-    radial-gradient(1.5px 1.5px at 82% 42%, rgba(255, 190, 100, 0.2), transparent),
-    radial-gradient(2px 2px at 88% 68%, rgba(255, 200, 120, 0.3), transparent),
-    radial-gradient(1.5px 1.5px at 70% 85%, rgba(255, 185, 100, 0.2), transparent),
-    radial-gradient(2px 2px at 92% 25%, rgba(255, 200, 130, 0.25), transparent),
-    radial-gradient(1.5px 1.5px at 78% 55%, rgba(255, 195, 110, 0.18), transparent),
-    radial-gradient(2px 2px at 85% 10%, rgba(255, 200, 120, 0.2), transparent),
-    radial-gradient(1.5px 1.5px at 95% 48%, rgba(255, 190, 100, 0.22), transparent),
-    radial-gradient(2px 2px at 72% 72%, rgba(255, 200, 130, 0.15), transparent),
-    radial-gradient(1.5px 1.5px at 90% 82%, rgba(255, 195, 110, 0.2), transparent),
-    /* Subtle ambient glow underneath */
-    radial-gradient(ellipse at 10% 50%, rgba(50, 70, 130, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 90% 50%, rgba(130, 90, 40, 0.06) 0%, transparent 50%);
+    /* Sci-fi glow — cool blue, upper left */
+    radial-gradient(circle at 5% 20%, rgba(60, 100, 200, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 20% 70%, rgba(40, 80, 180, 0.08) 0%, transparent 35%),
+    radial-gradient(circle at 15% 40%, rgba(70, 120, 220, 0.06) 0%, transparent 30%),
+    /* Sci-fi star clusters — left side */
+    radial-gradient(2px 2px at 8% 12%, rgba(150, 190, 255, 0.7), transparent),
+    radial-gradient(2px 2px at 4% 35%, rgba(150, 190, 255, 0.6), transparent),
+    radial-gradient(1.5px 1.5px at 12% 58%, rgba(130, 170, 255, 0.5), transparent),
+    radial-gradient(2.5px 2.5px at 18% 22%, rgba(160, 200, 255, 0.65), transparent),
+    radial-gradient(1.5px 1.5px at 6% 78%, rgba(140, 180, 255, 0.55), transparent),
+    radial-gradient(2px 2px at 22% 48%, rgba(130, 170, 255, 0.45), transparent),
+    radial-gradient(1.5px 1.5px at 10% 90%, rgba(150, 190, 255, 0.5), transparent),
+    radial-gradient(2px 2px at 16% 65%, rgba(140, 175, 255, 0.4), transparent),
+    radial-gradient(1.5px 1.5px at 3% 50%, rgba(160, 200, 255, 0.6), transparent),
+    radial-gradient(2px 2px at 25% 15%, rgba(130, 165, 255, 0.35), transparent),
+    radial-gradient(1.5px 1.5px at 14% 82%, rgba(150, 185, 255, 0.45), transparent),
+    radial-gradient(2px 2px at 9% 42%, rgba(140, 180, 255, 0.5), transparent),
+    /* Middle transition — scattered, dimmer */
+    radial-gradient(2px 2px at 35% 30%, rgba(180, 175, 210, 0.3), transparent),
+    radial-gradient(1.5px 1.5px at 45% 65%, rgba(200, 185, 190, 0.25), transparent),
+    radial-gradient(2px 2px at 50% 20%, rgba(190, 180, 200, 0.2), transparent),
+    radial-gradient(1.5px 1.5px at 40% 80%, rgba(195, 180, 195, 0.25), transparent),
+    /* Fantasy glow — warm gold, lower right */
+    radial-gradient(circle at 85% 30%, rgba(200, 140, 50, 0.1) 0%, transparent 40%),
+    radial-gradient(circle at 75% 75%, rgba(180, 120, 40, 0.08) 0%, transparent 35%),
+    radial-gradient(circle at 90% 60%, rgba(190, 130, 45, 0.06) 0%, transparent 30%),
+    /* Fantasy motes — right side, larger & warmer */
+    radial-gradient(3px 3px at 78% 18%, rgba(255, 200, 100, 0.5), transparent),
+    radial-gradient(2.5px 2.5px at 85% 42%, rgba(255, 185, 80, 0.45), transparent),
+    radial-gradient(3px 3px at 92% 65%, rgba(255, 200, 100, 0.55), transparent),
+    radial-gradient(2.5px 2.5px at 72% 80%, rgba(255, 190, 90, 0.4), transparent),
+    radial-gradient(3px 3px at 88% 25%, rgba(255, 205, 110, 0.5), transparent),
+    radial-gradient(2px 2px at 80% 55%, rgba(255, 195, 95, 0.4), transparent),
+    radial-gradient(3px 3px at 95% 38%, rgba(255, 200, 100, 0.45), transparent),
+    radial-gradient(2.5px 2.5px at 70% 70%, rgba(255, 190, 90, 0.35), transparent),
+    radial-gradient(2px 2px at 90% 85%, rgba(255, 200, 110, 0.4), transparent),
+    radial-gradient(3px 3px at 82% 10%, rgba(255, 195, 95, 0.5), transparent),
+    radial-gradient(2.5px 2.5px at 76% 50%, rgba(255, 200, 100, 0.35), transparent),
+    radial-gradient(2px 2px at 93% 72%, rgba(255, 190, 85, 0.4), transparent);
   background-attachment: fixed;
 }
 
