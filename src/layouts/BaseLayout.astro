@@ -60,6 +60,7 @@ const {
         <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
         <nav>
           <ul class="site-nav">
+            <li><a href="javascript:void(0)" onclick="document.getElementById('about-modal').showModal()">About</a></li>
             <li><a class="ml-onclick-form" href="javascript:void(0)" onclick="ml('show', 'WE9oBU', true)">Newsletter</a></li>
           </ul>
         </nav>
@@ -100,11 +101,29 @@ const {
       </div>
     )}
 
+    <dialog id="about-modal" class="about-modal">
+      <div class="about-modal__content">
+        <button class="about-modal__close" onclick="document.getElementById('about-modal').close()" aria-label="Close">&times;</button>
+        <img src="/images/author-photo.jpg" alt="M.P. Tayle" class="about-modal__photo" />
+        <h2 class="about-modal__name">M.P. Tayle</h2>
+        <p class="about-modal__bio">M.P. Tayle (Matthew Taylor) spent years as a Cyber Operations Sergeant in the United States Army, which is a fancy way of saying he knows exactly how technology can go sideways — and loves writing stories about what happens when it does. He's the author of the Jax Jensen Trilogy and writes science fiction and fantasy that's equal parts adventure, heart, and "oh no, that could actually happen."</p>
+        <p class="about-modal__bio">When not writing, he's rolling dice over Warhammer 40,000, drawing on Procreate, and being bossed around by a Maltipoo who thinks she runs the house.</p>
+      </div>
+    </dialog>
+
     <script>
       const toggle = document.querySelector('.nav-toggle');
       const nav = document.querySelector('.site-nav');
       if (toggle && nav) {
         toggle.addEventListener('click', () => nav.classList.toggle('open'));
+      }
+
+      // About modal — close on backdrop click
+      const aboutModal = document.getElementById('about-modal') as HTMLDialogElement | null;
+      if (aboutModal) {
+        aboutModal.addEventListener('click', (e) => {
+          if (e.target === aboutModal) aboutModal.close();
+        });
       }
 
       // Ambient audio player
