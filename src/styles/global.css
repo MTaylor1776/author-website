@@ -390,6 +390,54 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
 }
 
 /* --- MailerLite Form Integration --- */
+.ml-embedded {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Override MailerLite's injected light-theme styles */
+.ml-embedded .ml-form-embedWrapper {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.ml-embedded .ml-form-embedBody,
+.ml-embedded .ml-form-embedBody .ml-form-embedContent,
+.ml-embedded .ml-form-embedBody .ml-form-embedContent p,
+.ml-embedded .ml-form-embedBody .ml-form-embedContent h4,
+.ml-embedded .ml-form-successBody .ml-form-successContent,
+.ml-embedded .ml-form-successBody .ml-form-successContent p,
+.ml-embedded .ml-form-successBody .ml-form-successContent h4 {
+  color: var(--color-text) !important;
+  background: transparent !important;
+}
+
+.ml-embedded .ml-form-embedBody .ml-form-fieldRow input {
+  background: var(--color-bg-card) !important;
+  color: var(--color-text) !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: 8px !important;
+}
+
+.ml-embedded .ml-form-embedBody .ml-form-fieldRow input::placeholder {
+  color: var(--color-text-muted) !important;
+}
+
+.ml-embedded .ml-form-embedBody .ml-form-fieldRow input:focus {
+  border-color: var(--color-accent) !important;
+}
+
+.ml-embedded .ml-form-embedBody .ml-form-fieldRow button,
+.ml-embedded .ml-form-embedBody .ml-form-fieldRow .ml-form-embedSubmit button {
+  background: var(--color-accent) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+}
+
 .ml-form-embedContainer {
   max-width: 440px;
   margin: 0 auto;
