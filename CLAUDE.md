@@ -17,7 +17,8 @@
 - **Newsletter**: MailerLite — inline form on landing page + popup via nav "Newsletter" link
 - **About Modal**: `<dialog>` element in BaseLayout — opened by clicking site logo on homepage
 - **Audio Widget**: Floating play button with spinning "Oh, thematic music?" SVG text (per-universe tracks)
-- **Background**: Landing page has sci-fi starfield (cool blue, left) transitioning to fantasy motes (warm gold, right)
+- **Background**: Landing page has ambient color washes — blue glow (left/sci-fi), gold glow (right/fantasy), purple blend center
+- **Nav links**: Socials (Linktree, new tab) + Newsletter (MailerLite popup)
 
 ## Key Files
 - `src/content.config.ts` — Content collection schemas
@@ -32,6 +33,7 @@
 - **External scripts must use `is:inline`** — Astro converts `<script>` to ES modules by default, which breaks third-party scripts (MailerLite, reCAPTCHA) and global function declarations
 - **Site logo behavior**: On homepage → opens About modal; on other pages → navigates home
 - **No series labels above book titles** — removed from both book cards and book detail pages
+- **Audio widget on mobile**: Spinning text hidden, button shrinks to 38px
 
 ## Content
 ### Universes (3 + 1 coming soon)
@@ -62,4 +64,4 @@
 - Enable `robots.txt` for public launch
 - Add Cattlemancer books when ready
 - `src/components/` directory is empty — consider extracting reusable components
-- Footer still says "Matthew Taylor" — may want to update to M.P. Tayle
+- Linktree URL: https://linktr.ee/authormatthewtaylor
