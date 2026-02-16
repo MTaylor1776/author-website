@@ -975,6 +975,29 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
   fill: var(--color-accent);
 }
 
+@media (max-width: 640px) {
+  .audio-widget {
+    width: 44px;
+    height: 44px;
+    bottom: 0.75rem;
+    right: 0.75rem;
+  }
+
+  .audio-widget__text {
+    display: none;
+  }
+
+  .audio-player {
+    width: 38px;
+    height: 38px;
+  }
+
+  .audio-player__icon {
+    width: 18px;
+    height: 18px;
+  }
+}
+
 .audio-player {
   width: 48px;
   height: 48px;
