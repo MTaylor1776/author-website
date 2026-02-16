@@ -245,17 +245,17 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
 /* --- Universe Cards (Landing Page) --- */
 .universe-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1.5rem;
   padding: 1rem 0;
-  max-width: 1100px;
+  max-width: 1300px;
   margin: 0 auto;
 }
 
 @media (max-width: 900px) {
   .universe-grid {
     grid-template-columns: repeat(2, 1fr);
-    max-width: 700px;
+    max-width: 750px;
   }
 }
 
@@ -305,7 +305,7 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
   text-transform: uppercase;
   letter-spacing: 0.12em;
   margin-bottom: 0.3rem;
-  opacity: 0.7;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .universe-card__title {
