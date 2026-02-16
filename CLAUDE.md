@@ -28,6 +28,8 @@
 - `src/pages/universe/[id].astro` — Universe detail pages
 - `src/pages/universe/[universeId]/[bookId].astro` — Book detail pages
 - `public/_headers` — Netlify security headers (CSP includes MailerLite + reCAPTCHA domains)
+- `public/robots.txt` — Crawler permissions + sitemap reference
+- `astro.config.mjs` — Site URL + sitemap integration
 
 ## Important Patterns
 - **External scripts must use `is:inline`** — Astro converts `<script>` to ES modules by default, which breaks third-party scripts (MailerLite, reCAPTCHA) and global function declarations
@@ -55,13 +57,22 @@
 - Cover images go in `public/images/`
 - Buy links: use `kindle`, `paperback`, `barnesNoble`, `kobo`, `apple` fields (omit any that don't apply)
 
+## SEO & Discoverability
+- **robots.txt**: Allows all crawlers, references sitemap
+- **Sitemap**: Auto-generated via `@astrojs/sitemap` → `sitemap-index.xml`
+- **Open Graph**: og:title, og:description, og:image, og:url, og:type, og:site_name on all pages
+- **Twitter Cards**: summary_large_image with title, description, image
+- **Canonical URLs**: Via `Astro.url` + `Astro.site` (https://mptayle.com)
+- **JSON-LD**: Person schema (default), Book schema on book detail pages
+- **Keywords**: Per-page keywords meta tag
+- **OG Images**: Book covers used as OG images on book pages, author photo as default
+
 ## Deployment
 - **Host**: Netlify
 - **Build**: `npm run build` → `dist/`
-- **Status**: Preview mode — `robots.txt` blocks all crawlers
+- **Status**: Live — crawlers allowed, sitemap active
 
 ## Known TODOs
-- Enable `robots.txt` for public launch
 - Add Cattlemancer books when ready
 - `src/components/` directory is empty — consider extracting reusable components
 - Linktree URL: https://linktr.ee/authormatthewtaylor
