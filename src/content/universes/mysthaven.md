@@ -8,6 +8,7 @@ theme: "fantasy"
 order: 4
 cardGradient: "linear-gradient(135deg, #1a0e1e 0%, #2a1530 40%, #3d1f4a 70%, #2e1a20 100%)"
 music: "/audio/darkest-child.mp3"
+comingSoon: true
 ---
 
 Coming soon.

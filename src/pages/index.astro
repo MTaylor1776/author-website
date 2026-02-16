@@ -21,25 +21,31 @@ function slug(id: string) {
   <section class="section">
     <div class="container">
       <div class="universe-grid">
-        {universes.map((universe) => (
-          <a
-            href={`/universe/${slug(universe.id)}`}
-            class="universe-card"
-            style={`
-              --card-glow: ${universe.data.accentGlow};
-              ${universe.data.cardImage
-                ? `background-image: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 100%), url(${universe.data.cardImage});`
-                : `background: ${universe.data.cardGradient};`
-              }
-              background-size: cover;
-              background-position: center;
-            `}
-          >
-            <span class="universe-card__genre">{universe.data.genre}</span>
-            <h2 class="universe-card__title">{universe.data.name}</h2>
-            <p class="universe-card__tagline">{universe.data.tagline}</p>
-          </a>
-        ))}
+        {universes.map((universe) => {
+          const cardStyle = `
+            --card-glow: ${universe.data.accentGlow};
+            ${universe.data.cardImage
+              ? `background-image: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 100%), url(${universe.data.cardImage});`
+              : `background: ${universe.data.cardGradient};`
+            }
+            background-size: cover;
+            background-position: center;
+          `;
+          return universe.data.comingSoon ? (
+            <div class="universe-card universe-card--placeholder" style={cardStyle}>
+              <span class="universe-card__genre">{universe.data.genre}</span>
+              <h2 class="universe-card__title">{universe.data.name}</h2>
+              <p class="universe-card__tagline">{universe.data.tagline}</p>
+              <span class="universe-card__coming-soon">Coming 2026!</span>
+            </div>
+          ) : (
+            <a href={`/universe/${slug(universe.id)}`} class="universe-card" style={cardStyle}>
+              <span class="universe-card__genre">{universe.data.genre}</span>
+              <h2 class="universe-card__title">{universe.data.name}</h2>
+              <p class="universe-card__tagline">{universe.data.tagline}</p>
+            </a>
+          );
+        })}
       </div>
     </div>
   </section>

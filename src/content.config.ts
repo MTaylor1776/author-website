@@ -13,6 +13,7 @@ const universes = defineCollection({
     cardGradient: z.string(),  // CSS gradient for placeholder card
     cardImage: z.string().optional(), // Background image path for the card
     music: z.string().optional(),     // Ambient audio file path
+    comingSoon: z.boolean().optional(), // If true, card is non-clickable placeholder
   }),
 });
 
