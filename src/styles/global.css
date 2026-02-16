@@ -402,10 +402,11 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
   box-shadow: none !important;
 }
 
+.ml-embedded .ml-form-embedBody .ml-form-embedContent {
+  display: none !important;
+}
+
 .ml-embedded .ml-form-embedBody,
-.ml-embedded .ml-form-embedBody .ml-form-embedContent,
-.ml-embedded .ml-form-embedBody .ml-form-embedContent p,
-.ml-embedded .ml-form-embedBody .ml-form-embedContent h4,
 .ml-embedded .ml-form-successBody .ml-form-successContent,
 .ml-embedded .ml-form-successBody .ml-form-successContent p,
 .ml-embedded .ml-form-successBody .ml-form-successContent h4 {
