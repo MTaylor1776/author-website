@@ -23,12 +23,13 @@ const books = allBooks
   .sort((a, b) => a.data.order - b.data.order);
 ---
 <BaseLayout
-  title={`${universe.data.name} — Matthew Taylor`}
+  title={`${universe.data.name} — M.P. Tayle`}
   description={universe.data.tagline}
   theme={universe.data.theme}
   accent={universe.data.accent}
   accentGlow={universe.data.accentGlow}
   music={universe.data.music}
+  keywords={`${universe.data.name}, ${universe.data.genre}, M.P. Tayle, fantasy author, sci-fi author`}
 >
   <div class="container">
     <a href="/" class="back-link">&larr; All Universes</a>

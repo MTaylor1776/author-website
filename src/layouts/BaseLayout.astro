@@ -8,16 +8,25 @@ interface Props {
   accent?: string;
   accentGlow?: string;
   music?: string;
+  image?: string;
+  keywords?: string;
+  jsonLd?: Record<string, unknown>;
 }
 
 const {
   title,
-  description = "Matthew Taylor — One Author, Two Genres. Carefully-crafted, character-driven science fiction and fantasy.",
+  description = "M.P. Tayle writes science fiction and fantasy — from the Jax Jensen Trilogy to the Winds of Taramore. Carefully-crafted, character-driven stories full of adventure and heart.",
   theme = 'landing',
   accent,
   accentGlow,
   music,
+  image = '/images/author-photo.jpg',
+  keywords = 'sci-fi author, fantasy author, science fiction books, fantasy books, M.P. Tayle, Jax Jensen, Winds of Taramore, indie author',
+  jsonLd,
 } = Astro.props;
+
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(image, Astro.site).toString();
 ---
 <html lang="en" data-theme={theme}>
   <head>
@@ -25,9 +34,37 @@ const {
     <link rel="icon" type="image/jpeg" href="/favicon.jpg" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content="M.P. Tayle" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="robots" content="noindex, nofollow" />
+    <link rel="canonical" href={canonicalUrl} />
     <title>{title}</title>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="M.P. Tayle — Author" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImage} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- JSON-LD Structured Data -->
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd ?? {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "M.P. Tayle",
+      "url": "https://mptayle.com",
+      "image": "https://mptayle.com/images/author-photo.jpg",
+      "jobTitle": "Author",
+      "description": "Science fiction and fantasy author of the Jax Jensen Trilogy and the Winds of Taramore series.",
+      "sameAs": ["https://linktr.ee/authormatthewtaylor"]
+    })} />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

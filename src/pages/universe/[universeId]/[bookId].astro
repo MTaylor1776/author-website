@@ -40,12 +40,23 @@ const buyLinks = [
 ].filter((link) => link.url);
 ---
 <BaseLayout
-  title={`${book.data.title} — Matthew Taylor`}
+  title={`${book.data.title} — M.P. Tayle`}
   description={book.data.blurb}
   theme={universe?.data.theme}
   accent={universe?.data.accent}
   accentGlow={universe?.data.accentGlow}
   music={universe?.data.music}
+  image={book.data.cover}
+  keywords={`${book.data.title}, ${book.data.series}, M.P. Tayle, ${universe?.data.genre}, book`}
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "Book",
+    "name": book.data.title,
+    "author": { "@type": "Person", "name": "M.P. Tayle" },
+    "image": book.data.cover ? `https://mptayle.com${book.data.cover}` : undefined,
+    "url": `https://mptayle.com/universe/${book.data.universe}/${book.id.replace(/\.md$/, '')}`,
+    "genre": universe?.data.genre,
+  }}
 >
   <div class="container">
     <a href={`/universe/${book.data.universe}`} class="back-link">&larr; Back to {universe?.data.name}</a>
