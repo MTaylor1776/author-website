@@ -34,6 +34,7 @@ const books = defineCollection({
     apple: z.string().optional(),
     paperback: z.string().optional(),
     published: z.string().optional(),
+    freeWithNewsletter: z.boolean().optional(), // If true, shows "Free with newsletter sign-up!" badge
   }),
 });
 

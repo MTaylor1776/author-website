@@ -115,6 +115,9 @@ const samebook = startHereBook && latestReleaseBook && slug(startHereBook.id) ==
                 <h3 class="book-card__title">{book.data.title}</h3>
               </a>
               <p class="book-card__blurb">{book.data.blurb}</p>
+              {book.data.freeWithNewsletter && (
+                <a href="/#newsletter" class="free-badge">Free with newsletter sign-up!</a>
+              )}
               {book.data.kindle && book.data.kindle !== '#' && (
                 <a href={book.data.kindle} class="buy-now buy-now--card" target="_blank" rel="noopener noreferrer">Buy Now on Amazon</a>
               )}
