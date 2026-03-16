@@ -55,16 +55,19 @@ const samebook = startHereBook && latestReleaseBook && slug(startHereBook.id) ==
       {hasFeatured ? (
         <div class:list={['featured-books', { 'featured-books--single': samebook, 'featured-books--no-start': !startHereBook || samebook, 'featured-books--no-latest': !latestReleaseBook }]}>
           {startHereBook && !samebook && (
-            <a href={`/universe/${slug(universe.id)}/${slug(startHereBook.id)}`} class="featured-card">
+            <div class="featured-card">
               <span class="featured-card__label">Start Here</span>
-              <div class="featured-card__cover">
+              <a href={`/universe/${slug(universe.id)}/${slug(startHereBook.id)}`} class="featured-card__cover">
                 {startHereBook.data.cover
                   ? <img src={startHereBook.data.cover} alt={`${startHereBook.data.title} cover`} />
                   : <span>{startHereBook.data.title}</span>
                 }
-              </div>
-              <h3 class="featured-card__title">{startHereBook.data.title}</h3>
-            </a>
+              </a>
+              <a href={`/universe/${slug(universe.id)}/${slug(startHereBook.id)}`} class="featured-card__title">{startHereBook.data.title}</a>
+              {startHereBook.data.kindle && startHereBook.data.kindle !== '#' && (
+                <a href={startHereBook.data.kindle} class="buy-now buy-now--sm" target="_blank" rel="noopener noreferrer">Buy Now</a>
+              )}
+            </div>
           )}
 
           <div class={`universe-header__description universe-header__description--${slug(universe.id)}`}>
@@ -72,16 +75,19 @@ const samebook = startHereBook && latestReleaseBook && slug(startHereBook.id) ==
           </div>
 
           {latestReleaseBook && (
-            <a href={`/universe/${slug(universe.id)}/${slug(latestReleaseBook.id)}`} class="featured-card">
+            <div class="featured-card">
               <span class="featured-card__label">Latest Release</span>
-              <div class="featured-card__cover">
+              <a href={`/universe/${slug(universe.id)}/${slug(latestReleaseBook.id)}`} class="featured-card__cover">
                 {latestReleaseBook.data.cover
                   ? <img src={latestReleaseBook.data.cover} alt={`${latestReleaseBook.data.title} cover`} />
                   : <span>{latestReleaseBook.data.title}</span>
                 }
-              </div>
-              <h3 class="featured-card__title">{latestReleaseBook.data.title}</h3>
-            </a>
+              </a>
+              <a href={`/universe/${slug(universe.id)}/${slug(latestReleaseBook.id)}`} class="featured-card__title">{latestReleaseBook.data.title}</a>
+              {latestReleaseBook.data.kindle && latestReleaseBook.data.kindle !== '#' && (
+                <a href={latestReleaseBook.data.kindle} class="buy-now buy-now--sm" target="_blank" rel="noopener noreferrer">Buy Now</a>
+              )}
+            </div>
           )}
         </div>
       ) : (
@@ -97,18 +103,23 @@ const samebook = startHereBook && latestReleaseBook && slug(startHereBook.id) ==
       <h2>Books</h2>
       <div class="book-grid">
         {books.map((book) => (
-          <a href={`/universe/${slug(universe.id)}/${slug(book.id)}`} class="book-card">
-            <div class="book-card__cover">
+          <div class="book-card">
+            <a href={`/universe/${slug(universe.id)}/${slug(book.id)}`} class="book-card__cover">
               {book.data.cover
                 ? <img src={book.data.cover} alt={`${book.data.title} cover`} />
                 : <span>{book.data.title}</span>
               }
-            </div>
+            </a>
             <div class="book-card__info">
-              <h3 class="book-card__title">{book.data.title}</h3>
+              <a href={`/universe/${slug(universe.id)}/${slug(book.id)}`} class="book-card__title-link">
+                <h3 class="book-card__title">{book.data.title}</h3>
+              </a>
               <p class="book-card__blurb">{book.data.blurb}</p>
+              {book.data.kindle && book.data.kindle !== '#' && (
+                <a href={book.data.kindle} class="buy-now buy-now--card" target="_blank" rel="noopener noreferrer">Buy Now on Amazon</a>
+              )}
             </div>
-          </a>
+          </div>
         ))}
       </div>
     </div>

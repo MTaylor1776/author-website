@@ -31,13 +31,16 @@ const nextBook = seriesBooks.length > 1
   ? seriesBooks.find((b) => b.data.order === book.data.order + 1)
   : undefined;
 
-const buyLinks = [
-  { label: 'Kindle', url: book.data.kindle },
+// Primary buy link (Kindle/Amazon) gets the big button
+const primaryBuyUrl = book.data.kindle && book.data.kindle !== '#' ? book.data.kindle : undefined;
+
+// Secondary links (everything else, plus paperback)
+const secondaryLinks = [
+  { label: 'Paperback', url: book.data.paperback },
   { label: 'Barnes & Noble', url: book.data.barnesNoble },
   { label: 'Kobo', url: book.data.kobo },
   { label: 'Apple Books', url: book.data.apple },
-  { label: 'Paperback', url: book.data.paperback },
-].filter((link) => link.url);
+].filter((link) => link.url && link.url !== '#');
 ---
 <BaseLayout
   title={`${book.data.title} — M.P. Tayle`}
@@ -73,13 +76,22 @@ const buyLinks = [
         <h1 class="book-detail__title">{book.data.title}</h1>
         <p class="book-detail__blurb">{book.data.blurb}</p>
 
-        {buyLinks.length > 0 && (
+        {(primaryBuyUrl || secondaryLinks.length > 0) && (
           <div class="buy-links">
-            {buyLinks.map((link) => (
-              <a href={link.url} class="buy-link" target="_blank" rel="noopener noreferrer">
-                {link.label}
+            {primaryBuyUrl && (
+              <a href={primaryBuyUrl} class="buy-now" target="_blank" rel="noopener noreferrer">
+                Buy Now on Amazon
               </a>
-            ))}
+            )}
+            {secondaryLinks.length > 0 && (
+              <div class="buy-links__secondary">
+                {secondaryLinks.map((link) => (
+                  <a href={link.url} class="buy-link" target="_blank" rel="noopener noreferrer">
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
         )}
 
