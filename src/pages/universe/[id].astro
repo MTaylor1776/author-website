@@ -21,6 +21,18 @@ const allBooks = await getCollection('books');
 const books = allBooks
   .filter((book) => book.data.universe === slug(universe.id))
   .sort((a, b) => a.data.order - b.data.order);
+
+// Look up featured books
+const startHereBook = universe.data.startHere
+  ? allBooks.find((b) => slug(b.id) === universe.data.startHere)
+  : undefined;
+const latestReleaseBook = universe.data.latestRelease
+  ? allBooks.find((b) => slug(b.id) === universe.data.latestRelease)
+  : undefined;
+
+const hasFeatured = startHereBook || latestReleaseBook;
+// If both point to same book, only show as Latest Release
+const samebook = startHereBook && latestReleaseBook && slug(startHereBook.id) === slug(latestReleaseBook.id);
 ---
 <BaseLayout
   title={`${universe.data.name} — M.P. Tayle`}
@@ -39,9 +51,44 @@ const books = allBooks
     <div class="container">
       <span class="universe-header__genre">{universe.data.genre}</span>
       <h1 class="universe-header__title">{universe.data.name}</h1>
-      <div class={`universe-header__description universe-header__description--${slug(universe.id)}`}>
-        <Content />
-      </div>
+
+      {hasFeatured ? (
+        <div class:list={['featured-books', { 'featured-books--single': samebook, 'featured-books--no-start': !startHereBook || samebook, 'featured-books--no-latest': !latestReleaseBook }]}>
+          {startHereBook && !samebook && (
+            <a href={`/universe/${slug(universe.id)}/${slug(startHereBook.id)}`} class="featured-card">
+              <span class="featured-card__label">Start Here</span>
+              <div class="featured-card__cover">
+                {startHereBook.data.cover
+                  ? <img src={startHereBook.data.cover} alt={`${startHereBook.data.title} cover`} />
+                  : <span>{startHereBook.data.title}</span>
+                }
+              </div>
+              <h3 class="featured-card__title">{startHereBook.data.title}</h3>
+            </a>
+          )}
+
+          <div class={`universe-header__description universe-header__description--${slug(universe.id)}`}>
+            <Content />
+          </div>
+
+          {latestReleaseBook && (
+            <a href={`/universe/${slug(universe.id)}/${slug(latestReleaseBook.id)}`} class="featured-card">
+              <span class="featured-card__label">Latest Release</span>
+              <div class="featured-card__cover">
+                {latestReleaseBook.data.cover
+                  ? <img src={latestReleaseBook.data.cover} alt={`${latestReleaseBook.data.title} cover`} />
+                  : <span>{latestReleaseBook.data.title}</span>
+                }
+              </div>
+              <h3 class="featured-card__title">{latestReleaseBook.data.title}</h3>
+            </a>
+          )}
+        </div>
+      ) : (
+        <div class={`universe-header__description universe-header__description--${slug(universe.id)}`}>
+          <Content />
+        </div>
+      )}
     </div>
   </section>
 
