@@ -602,8 +602,12 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
   font-size: 1.1rem;
   color: var(--color-text-muted);
   text-align: center;
-  padding: 1rem;
   text-decoration: none;
+}
+
+/* Only add padding for placeholder text, not cover images */
+.book-card__cover:not(:has(img)) {
+  padding: 1rem;
 }
 
 /* Sci-fi book cover placeholder */
@@ -1226,6 +1230,36 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
   fill: var(--color-accent);
 }
 
+/* Hide mobile label on desktop (spinning SVG shows instead) */
+.audio-widget__label {
+  display: none;
+}
+
+.audio-player {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-card);
+  color: var(--color-accent);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color var(--transition-speed), box-shadow var(--transition-speed), transform var(--transition-speed);
+}
+
+.audio-player:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 12px var(--color-accent-glow);
+  transform: scale(1.08);
+}
+
+.audio-player__icon {
+  width: 22px;
+  height: 22px;
+}
+
 @media (max-width: 640px) {
   .audio-widget {
     width: auto;
@@ -1265,36 +1299,6 @@ h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
     width: 16px;
     height: 16px;
   }
-}
-
-/* Hide mobile label on desktop (spinning SVG shows instead) */
-.audio-widget__label {
-  display: none;
-}
-
-.audio-player {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  border: 1px solid var(--color-border);
-  background: var(--color-bg-card);
-  color: var(--color-accent);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: border-color var(--transition-speed), box-shadow var(--transition-speed), transform var(--transition-speed);
-}
-
-.audio-player:hover {
-  border-color: var(--color-accent);
-  box-shadow: 0 0 12px var(--color-accent-glow);
-  transform: scale(1.08);
-}
-
-.audio-player__icon {
-  width: 22px;
-  height: 22px;
 }
 
 .audio-player__icon--pause {
