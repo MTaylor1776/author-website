@@ -78,4 +78,4 @@
 ## Known TODOs
 - Add Cattlemancer books when ready
 - `src/components/` directory is empty — consider extracting reusable components
-- Linktree URL: https://linktr.ee/authormatthewtaylor
+- Linktree URL: https://linktr.ee/AuthorMPTayle
