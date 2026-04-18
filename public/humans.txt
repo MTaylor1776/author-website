@@ -1,0 +1,27 @@
+/* HUMANS.TXT — Department of Inquiry Personnel Dossier */
+/* Format inspired by humanstxt.org                     */
+
+/* AUTHOR */
+  Designation: MP Tayle
+  Cover Identity: Matthew Taylor
+  Division: Unofficial
+  Clearance: Handler
+  Languages: English, sarcasm, the occasional military acronym
+  Location: Somewhere with good wifi and a dice collection
+
+/* STACK */
+  Site: Astro (static — no moving parts for hostiles to exploit)
+  Host: Netlify
+  Fonts: Cinzel, EB Garamond, Orbitron, Rajdhani, Inter
+  Music: Kevin MacLeod / incompetech.com (CC BY 4.0)
+
+/* FIELD NOTES */
+  The Jensenverse started as a short story that refused to stay short.
+  The Department of Inquiry was supposed to be a background detail.
+  Jax Jensen had other ideas.
+
+  If you're reading this, you've gone further than most.
+  The Federation thanks you for your diligence.
+  Jax would probably just nod and say "not bad."
+
+/* FOR FREEDOM AND THE FEDERATION */

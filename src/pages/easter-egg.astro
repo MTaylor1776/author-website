@@ -1,0 +1,148 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Department of Inquiry — Classified Briefing"
+  description="You weren't supposed to find this. But here you are."
+  theme="scifi"
+  accent="#00b4d8"
+  accentGlow="rgba(0, 180, 216, 0.4)"
+>
+  <div class="container">
+    <div class="doi-briefing">
+      <p class="doi-stamp">// CLASSIFIED — CLEARANCE LEVEL: CURIOUS //</p>
+      <h1 class="doi-title">Department of Inquiry<br /><span>Operative Onboarding File</span></h1>
+
+      <div class="doi-body">
+        <p>
+          Well. You found it. Either someone tipped you off, or you're exactly the kind of person
+          we've been looking for.
+        </p>
+        <p>
+          The Department of Inquiry doesn't advertise. We don't post on job boards. We don't
+          hand out business cards at Federation galas. We find our people the old-fashioned way —
+          they find <em>us</em>.
+        </p>
+        <p>
+          You've demonstrated initiative, technical curiosity, and a healthy disregard for staying
+          in the lanes you're told to stay in. That's not a liability. That's a <strong>qualification</strong>.
+        </p>
+        <p>
+          Jax Jensen didn't fill out an application either.
+        </p>
+
+        <hr class="doi-divider" />
+
+        <p class="doi-label">// FIELD NOTE FROM HANDLER //</p>
+        <p>
+          The Federation spans a hundred worlds. Most people spend their entire lives on one.
+          The ones who dig — the ones who pull threads and follow breadcrumbs through server logs
+          and response headers and places they weren't supposed to look — those are the ones
+          who change things.
+        </p>
+        <p>
+          Stay curious. Read the books. The answers are in there too.
+        </p>
+        <p class="doi-sign">
+          — M.P. Tayle<br />
+          <span>Handler, Unofficial Division</span>
+        </p>
+
+        <hr class="doi-divider" />
+
+        <p class="doi-label">// BONUS INTEL //</p>
+        <p>
+          One more thing the thorough among you may appreciate: <a href="/humans.txt">/humans.txt</a>
+        </p>
+      </div>
+
+      <a href="/" class="doi-back">← Return to cover identity</a>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .doi-briefing {
+    max-width: 680px;
+    margin: 4rem auto;
+    padding: 2.5rem;
+    border: 1px solid var(--color-accent);
+    border-radius: 8px;
+    box-shadow: 0 0 40px rgba(0, 180, 216, 0.1), inset 0 0 60px rgba(0, 180, 216, 0.03);
+    font-family: 'Rajdhani', sans-serif;
+  }
+
+  .doi-stamp {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    color: var(--color-accent);
+    margin-bottom: 1.5rem;
+  }
+
+  .doi-title {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    color: var(--color-accent);
+    line-height: 1.2;
+    margin-bottom: 2rem;
+  }
+
+  .doi-title span {
+    display: block;
+    font-size: 0.55em;
+    letter-spacing: 0.2em;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    margin-top: 0.4rem;
+  }
+
+  .doi-body p {
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+    font-size: 1.05rem;
+    color: var(--color-text);
+  }
+
+  .doi-body a {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+
+  .doi-divider {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin: 2rem 0;
+  }
+
+  .doi-label {
+    font-size: 0.7rem !important;
+    letter-spacing: 0.15em;
+    color: var(--color-accent);
+    margin-bottom: 0.75rem !important;
+  }
+
+  .doi-sign {
+    color: var(--color-text-muted) !important;
+    font-style: italic;
+  }
+
+  .doi-sign span {
+    font-size: 0.85em;
+    font-style: normal;
+    letter-spacing: 0.05em;
+  }
+
+  .doi-back {
+    display: inline-block;
+    margin-top: 2rem;
+    color: var(--color-accent);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .doi-back:hover {
+    text-decoration: underline;
+  }
+</style>
