@@ -15,13 +15,13 @@ interface Props {
 
 const {
   title,
-  description = "M.P. Tayle writes science fiction and fantasy — from the Jax Jensen Trilogy to the Winds of Taramore. Carefully crafted, character-driven stories full of adventure and heart.",
+  description = "MP Tayle writes science fiction and fantasy — from the Jax Jensen Trilogy to the Winds of Taramore. Carefully crafted, character-driven stories full of adventure and heart.",
   theme = 'landing',
   accent,
   accentGlow,
   music,
   image = '/images/author-photo.jpg',
-  keywords = 'sci-fi author, fantasy author, science fiction books, fantasy books, M.P. Tayle, Jax Jensen, Winds of Taramore, indie author',
+  keywords = 'sci-fi author, fantasy author, science fiction books, fantasy books, MP Tayle, Jax Jensen, Winds of Taramore, indie author',
   jsonLd,
 } = Astro.props;
 
@@ -35,14 +35,14 @@ const ogImage = new URL(image, Astro.site).toString();
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="keywords" content={keywords} />
-    <meta name="author" content="M.P. Tayle" />
+    <meta name="author" content="MP Tayle" />
     <meta name="generator" content={Astro.generator} />
     <link rel="canonical" href={canonicalUrl} />
     <title>{title}</title>
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="M.P. Tayle — Author" />
+    <meta property="og:site_name" content="MP Tayle — Author" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
@@ -58,7 +58,7 @@ const ogImage = new URL(image, Astro.site).toString();
     <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd ?? {
       "@context": "https://schema.org",
       "@type": "Person",
-      "name": "M.P. Tayle",
+      "name": "MP Tayle",
       "url": "https://mptayle.com",
       "image": "https://mptayle.com/images/author-photo.jpg",
       "jobTitle": "Author",
@@ -93,7 +93,7 @@ const ogImage = new URL(image, Astro.site).toString();
   <body>
     <header class="site-header">
       <div class="container">
-        <a href="/" class="site-logo" onclick="if(window.location.pathname==='/'){event.preventDefault();document.getElementById('about-modal').showModal();}">Author M.P. Tayle</a>
+        <a href="/" class="site-logo" onclick="if(window.location.pathname==='/'){event.preventDefault();document.getElementById('about-modal').showModal();}">Author MP Tayle</a>
         <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
         <nav>
           <ul class="site-nav">
@@ -142,9 +142,9 @@ const ogImage = new URL(image, Astro.site).toString();
     <dialog id="about-modal" class="about-modal">
       <div class="about-modal__content">
         <button class="about-modal__close" onclick="document.getElementById('about-modal').close()" aria-label="Close">&times;</button>
-        <img src="/images/author-photo.jpg" alt="M.P. Tayle" class="about-modal__photo" />
-        <h2 class="about-modal__name">M.P. Tayle</h2>
-        <p class="about-modal__bio">M.P. Tayle (Matthew Taylor) spent years as a Cyber Operations Sergeant in the United States Army, which is a fancy way of saying he knows exactly how technology can go sideways — and loves writing stories about what happens when it does. He's the author of the Jax Jensen Trilogy and writes science fiction and fantasy that's equal parts adventure, heart, and "oh no, that could actually happen."</p>
+        <img src="/images/author-photo.jpg" alt="MP Tayle" class="about-modal__photo" />
+        <h2 class="about-modal__name">MP Tayle</h2>
+        <p class="about-modal__bio">MP Tayle (Matthew Taylor) spent years as a Cyber Operations Sergeant in the United States Army, which is a fancy way of saying he knows exactly how technology can go sideways — and loves writing stories about what happens when it does. He's the author of the Jax Jensen Trilogy and writes science fiction and fantasy that's equal parts adventure, heart, and "oh no, that could actually happen."</p>
         <p class="about-modal__bio">When not writing, he's rolling dice over Warhammer 40,000, drawing on Procreate, and being bossed around by a Maltipoo who thinks she runs the house.</p>
       </div>
     </dialog>

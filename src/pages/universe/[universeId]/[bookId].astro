@@ -35,19 +35,19 @@ const nextBook = seriesBooks.length > 1
 const buyUrl = book.data.kindle && book.data.kindle !== '#' ? book.data.kindle : undefined;
 ---
 <BaseLayout
-  title={`${book.data.title} — M.P. Tayle`}
+  title={`${book.data.title} — MP Tayle`}
   description={book.data.blurb}
   theme={universe?.data.theme}
   accent={universe?.data.accent}
   accentGlow={universe?.data.accentGlow}
   music={universe?.data.music}
   image={book.data.cover}
-  keywords={`${book.data.title}, ${book.data.series}, M.P. Tayle, ${universe?.data.genre}, book`}
+  keywords={`${book.data.title}, ${book.data.series}, MP Tayle, ${universe?.data.genre}, book`}
   jsonLd={{
     "@context": "https://schema.org",
     "@type": "Book",
     "name": book.data.title,
-    "author": { "@type": "Person", "name": "M.P. Tayle" },
+    "author": { "@type": "Person", "name": "MP Tayle" },
     "image": book.data.cover ? `https://mptayle.com${book.data.cover}` : undefined,
     "url": `https://mptayle.com/universe/${book.data.universe}/${book.id.replace(/\.md$/, '')}`,
     "genre": universe?.data.genre,

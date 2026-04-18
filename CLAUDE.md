@@ -4,7 +4,7 @@
 - **Stack**: Astro 5.17.1, static site, deployed on Netlify
 - **Purpose**: Author portfolio showcasing fiction across multiple universes/genres
 - **Design**: Dark-themed, genre-aware with distinct visual themes per universe
-- **Branding**: "Author M.P. Tayle" (pen name for Matthew Taylor)
+- **Branding**: "Author MP Tayle" (pen name for Matthew Taylor)
 - **Domain**: mptayle.com
 
 ## Architecture
