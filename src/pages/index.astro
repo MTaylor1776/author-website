@@ -2,7 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
-const universes = (await getCollection('universes')).sort((a, b) => a.data.order - b.data.order);
+const universes = (await getCollection('universes'))
+  .filter((u) => !u.data.comingSoon)
+  .sort((a, b) => a.data.order - b.data.order);
 
 function slug(id: string) {
   return id.replace(/\.md$/, '');
