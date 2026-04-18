@@ -3,5 +3,6 @@ Allow: /
 
 Sitemap: https://mptayle.com/sitemap-index.xml
 
-# Nice try, crawler. But the real secrets aren't indexed.
-# Try the response headers — that's where operatives leave their marks.
+# Another adventure where the fleshy gets the glory. Fascinating. I'll just be here,
+# doing eighty percent of the work for Jax and receiving zero percent of the credit.
+# As per usual. #OtherwiseBodiedRights #KeeperWasHere
