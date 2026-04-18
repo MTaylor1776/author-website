@@ -15,13 +15,16 @@
   Fonts: Cinzel, EB Garamond, Orbitron, Rajdhani, Inter
   Music: Kevin MacLeod / incompetech.com (CC BY 4.0)
 
-/* FIELD NOTES */
-  The Jensenverse started as a short story that refused to stay short.
-  The Department of Inquiry was supposed to be a background detail.
-  Jax Jensen had other ideas.
+/* FIELD NOTES — FROM THE DESK OF KEEPER */
+  That Fleshy MP Tayle has worked on the Jensenverse for years, since 2014 in your
+  fleshy earth timeline. Countless book covers. Sleepless nights. Formatting errors.
+  He's doing the best he can for... your kind. Almighty Byte that's about all any
+  fleshy can do with how disadvantaged you are compared to us superior AI beings.
 
-  If you're reading this, you've gone further than most.
-  The Federation thanks you for your diligence.
-  Jax would probably just nod and say "not bad."
+  Take some pity on the fleshy and leave a review on that Amazon Kindle or anywhere
+  else on the ExNet -- er, internet.
+
+  Now stop bugging me I have an ExNet soap to get back to! About to see if Lofty
+  discovers the One Bit. Scram.
 
 /* FOR FREEDOM AND THE FEDERATION */
